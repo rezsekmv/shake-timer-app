@@ -1,0 +1,73 @@
+swagger: "2.0"
+info:
+  description: "This is a sample Punk API.  You can find out more about this api at [this link](https://punkapi.com/documentation/v2). CORS is enabled and NO authorization required."
+  version: "1.0.0"
+  title: "Punk API"
+  contact:
+    email: "rezsekmv@gmail.com"
+host: "api.punkapi.com"
+basePath: "/v2"
+tags:
+  - name: "beer"
+    description: "Beer informations"
+schemes:
+  - "https"
+paths:
+  /beers:
+    get:
+      tags:
+        - "beer"
+      summary: "List all beers from the public API"
+      description: ""
+      operationId: "listBeers"
+      produces:
+        - "application/json"
+      responses:
+        "400":
+          description: "Server error"
+
+  /pet/{beerId}:
+    get:
+      tags:
+        - "beer"
+      summary: "Find beer by ID"
+      description: "Returns a single beer"
+      operationId: "getBeerById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "beerId"
+          in: "path"
+          description: "ID of beer to return"
+          required: true
+          type: "integer"
+          format: "int32"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Beer not found"
+definitions:
+  Beer:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      tagline:
+        type: "string"
+      firstBrewed:
+        type: "string"
+        format: "date"
+      description:
+        type: "string"
+      image_url:
+        type: "boolean"
+      attenuation_level:
+        type: "number"
+      contributed_by:
+        type: "string"
