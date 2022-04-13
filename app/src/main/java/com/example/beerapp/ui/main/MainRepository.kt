@@ -1,4 +1,4 @@
-package hu.bme.aut.android.demoapp.ui.main
+package com.example.beerapp.ui.main
 
 class MainRepository {
 }

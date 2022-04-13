@@ -1,4 +1,4 @@
-package hu.bme.aut.android.demoapp.ui.details
+package com.example.beerapp.ui.details
 
 class DetailsViewModel {
 }
