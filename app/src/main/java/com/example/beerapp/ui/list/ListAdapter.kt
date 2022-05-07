@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.beerapp.databinding.ListItemBinding
 import com.example.beerapp.model.dto.BeerDTO
 
@@ -30,6 +31,9 @@ class ListAdapter(private val dataSet: MutableList<BeerDTO>, private val onClick
         viewHolder.tvName.text = dataSet[position].name
         viewHolder.tvYear.text = dataSet[position].year
         viewHolder.imageView.setImageURI(dataSet[position].image.toUri())
+        Glide.with(viewHolder.imageView.context)
+            .load(dataSet[position].image.toUri())
+            .into(viewHolder.imageView)
 
         viewHolder.tvName.setOnClickListener {
             onClick(dataSet[position].id)

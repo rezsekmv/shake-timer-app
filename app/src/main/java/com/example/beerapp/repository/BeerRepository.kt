@@ -19,9 +19,9 @@ class BeerRepository @Inject constructor(
     suspend fun getBeers(): List<BeerDTO> {
         return try {
             val beers = beerService.getBeers()
-            beers.map {
-                beerDao.insertBeer(it.toBeerEntity())
-            }
+//            beers.map {
+//                beerDao.insertBeer(it.toBeerEntity())
+//            }
             beers
         } catch (e: Exception) {
             Log.d("DEBUG", e.message.toString())
