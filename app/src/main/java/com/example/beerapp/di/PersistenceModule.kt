@@ -2,8 +2,8 @@ package com.example.beerapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.beerapp.persistance.AppDatabase
-import com.example.beerapp.persistance.BeerDao
+import com.example.beerapp.datasource.database.AppDatabase
+import com.example.beerapp.datasource.database.BeerDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
