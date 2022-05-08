@@ -29,7 +29,7 @@ class DetailFragment : Fragment() {
 
         viewModel.beerLiveData.observe(viewLifecycleOwner) {
             binding.tvName.text = viewModel.beerLiveData.value?.name
-            binding.tvYear.text = viewModel.beerLiveData.value?.year
+            binding.tvYear.text = viewModel.beerLiveData.value?.formattedYear
             binding.tvDescription.text = viewModel.beerLiveData.value?.description
             Glide.with(binding.imageView.context)
                 .load(viewModel.beerLiveData.value?.image)

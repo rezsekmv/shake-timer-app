@@ -11,11 +11,15 @@ data class BeerDTO(
     var description: String,
     @Json(name = "image_url")
     var image: String
-)
+) {
+    val formattedYear: String
+    get() = year.takeLast(4)
+}
 
 fun BeerDTO.toBeerEntity() = BeerEntity(
     id = id,
     name = name,
-    year = year,
-    description = description
+    year = formattedYear,
+    description = description,
+    image = image
 )

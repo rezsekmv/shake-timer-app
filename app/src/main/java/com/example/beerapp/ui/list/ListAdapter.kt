@@ -34,7 +34,7 @@ class ListAdapter(
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.tvName.text = dataSet[position].name
-        viewHolder.tvYear.text = dataSet[position].year
+        viewHolder.tvYear.text = dataSet[position].formattedYear
         Glide.with(viewHolder.imageView.context)
             .load(dataSet[position].image.toUri())
             .into(viewHolder.imageView)

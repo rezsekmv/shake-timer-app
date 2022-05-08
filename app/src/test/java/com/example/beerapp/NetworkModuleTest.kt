@@ -48,14 +48,12 @@ class NetworkModuleTest {
     @Inject
     lateinit var context: Context
 
-    private fun readFileFromAssets(context: Context, fileName: String): String? {
-        return try {
-            val source = context.assets.open(fileName).source().buffer()
-            source.readByteString().string(Charset.forName("utf-8"))
-        } catch (e: IOException) {
-            e.printStackTrace()
-            null
-        }
+    private fun readFileFromAssets(context: Context, fileName: String): String? = try {
+        val source = context.assets.open(fileName).source().buffer()
+        source.readByteString().string(Charset.forName("utf-8"))
+    } catch (e: IOException) {
+        e.printStackTrace()
+        null
     }
 
     @ExperimentalCoroutinesApi
@@ -70,6 +68,27 @@ class NetworkModuleTest {
         // Assert
         val expectedDto = listOf(BeerDTO(
             id = 1,
+            name = "Soproni",
+            year = "02/1998",
+            description = "Ez egy olcsó magyar sör, minden kocsmában nagyjából ezt csapolják.",
+            image = "https://image-url.hu/image.jpg"
+        ))
+        assertEquals(expectedDto, actualDto)
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun getBeerFromApiTest() = runTest {
+        // Arrange
+        mockWebServer.enqueue(MockResponse().setResponseCode(200).setBody(readFileFromAssets(context, "beer.json").orEmpty()))
+
+        // Act
+        val id = 1
+        val actualDto = service.getBeerById(id)
+
+        // Assert
+        val expectedDto = listOf(BeerDTO(
+            id = id,
             name = "Soproni",
             year = "02/1998",
             description = "Ez egy olcsó magyar sör, minden kocsmában nagyjából ezt csapolják.",

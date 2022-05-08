@@ -10,7 +10,8 @@ data class BeerEntity(
     val id: Int,
     val year: String,
     val name: String,
-    val description: String
+    val description: String,
+    val image: String
 )
 
 fun BeerEntity.toBeerDTO() = BeerDTO(
@@ -18,5 +19,5 @@ fun BeerEntity.toBeerDTO() = BeerDTO(
     name = name,
     year = year,
     description = description,
-    image = "https://images.punkapi.com/v2/keg.png"
+    image = image
 )
