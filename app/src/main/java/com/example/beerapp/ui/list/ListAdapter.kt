@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +14,14 @@ import com.example.beerapp.databinding.ListItemBinding
 import com.example.beerapp.model.dto.BeerDTO
 
 
-class ListAdapter(private val dataSet: MutableList<BeerDTO>, private val onClick: (id: Int) -> Unit):
+class ListAdapter(
+    private val dataSet: MutableList<BeerDTO>,
+    private val onClick: (id: Int) -> Unit
+) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val root: LinearLayout = binding.root
         val tvName: TextView = binding.tvName
         val tvYear: TextView = binding.tvYear
         val imageView: ImageView = binding.imageView
@@ -30,12 +35,11 @@ class ListAdapter(private val dataSet: MutableList<BeerDTO>, private val onClick
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.tvName.text = dataSet[position].name
         viewHolder.tvYear.text = dataSet[position].year
-        viewHolder.imageView.setImageURI(dataSet[position].image.toUri())
         Glide.with(viewHolder.imageView.context)
             .load(dataSet[position].image.toUri())
             .into(viewHolder.imageView)
 
-        viewHolder.tvName.setOnClickListener {
+        viewHolder.root.setOnClickListener {
             onClick(dataSet[position].id)
         }
     }
