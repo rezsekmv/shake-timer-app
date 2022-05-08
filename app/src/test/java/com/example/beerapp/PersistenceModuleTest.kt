@@ -63,6 +63,30 @@ class PersistenceModuleTest {
         assertEquals(1, dao.getAll().size)
     }
 
+    @ExperimentalCoroutinesApi
+    @Test
+    fun readNullTest() = runTest {
+        // Arrange
+        val dao = database.beerDao()
+
+        // Act
+
+        // Assert
+        assertEquals(0, dao.getAll().size)
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun readNullIdTest() = runTest {
+        // Arrange
+        val dao = database.beerDao()
+
+        // Act
+
+        // Assert
+        assertEquals(null, dao.getBeer(0))
+    }
+
     @After
     fun close() {
         database.close()

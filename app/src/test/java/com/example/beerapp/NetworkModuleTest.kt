@@ -15,12 +15,14 @@ import okio.buffer
 import okio.source
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import retrofit2.HttpException
 import java.io.IOException
 import java.nio.charset.Charset
 import javax.inject.Inject
