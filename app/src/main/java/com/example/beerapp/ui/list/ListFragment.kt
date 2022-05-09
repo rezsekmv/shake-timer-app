@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beerapp.R
 import com.example.beerapp.databinding.FragmentListBinding
-import com.example.beerapp.model.dto.BeerDTO
 import dagger.hilt.android.AndroidEntryPoint
 
 
