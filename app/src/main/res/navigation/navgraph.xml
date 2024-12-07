@@ -8,15 +8,18 @@
     <fragment
         android:id="@+id/fragment_detail"
         android:name="com.example.beerapp.ui.details.DetailFragment"
-        tools:layout="@layout/fragment_detail"
-        />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="id"
+            app:argType="integer"/>
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="com.example.beerapp.ui.main.MainFragment"
-        tools:layout="@layout/fragment_main">
+        android:name="com.example.beerapp.ui.list.ListFragment"
+        tools:layout="@layout/fragment_list">
         <action
-            android:id="@+id/nav"
+            android:id="@+id/action_to_detail"
             app:destination="@id/fragment_detail">
 
         </action>
